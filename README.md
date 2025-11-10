@@ -1,16 +1,153 @@
-# React + Vite
+# 🧩 **README — lms-frontend**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```markdown
+# 🎓 LMS Frontend (React)
 
-Currently, two official plugins are available:
+This is the **frontend** of the Learning Management System (LMS), built using **React + Vite**.  
+It provides interfaces for **Students**, **Instructors**, and **Admins** to interact with the LMS backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 👨‍🎓 Student
+- Login and profile view
+- View enrolled courses, lessons, and grades
+- View attendance percentage
+- Pay course fees and download receipts
+- Check daily class schedule
+- Submit feedback
 
-## Expanding the ESLint configuration
+### 👩‍🏫 Instructor
+- Login to manage assigned courses
+- Upload lessons, materials, and assignments
+- Mark attendance for students
+- View and grade submissions
+- View schedules
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🧑‍💼 Admin
+- Create and manage users, courses, and departments
+- Create class schedules
+- View reports and analytics
+- Monitor attendance, fees, and grades
+
+---
+
+## ⚙️ Tech Stack
+
+| Layer | Technology |
+|--------|-------------|
+| Frontend Framework | React + Vite |
+| UI Styling | TailwindCSS / Material UI |
+| State Management | Context API / Redux Toolkit |
+| Routing | React Router v6 |
+| HTTP Client | Axios |
+| Authentication | JWT stored in localStorage |
+| Environment Config | Vite `.env` variables |
+
+---
+
+## 🧱 Project Structure
+
+```
+
+src/
+├── components/        # Reusable UI components
+├── pages/             # Pages for different routes
+├── context/           # Auth & role-based context providers
+├── services/          # Axios API service wrappers
+├── router/            # Protected route logic
+├── App.jsx            # Main application routes
+└── main.jsx           # Entry point
+
+````
+
+---
+
+## 🔧 Setup Instructions
+
+### 1️⃣ Clone the Repo
+```bash
+git clone https://github.com/PUSKAR-DJ/lms-frontend.git
+cd lms-frontend
+````
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Configure Environment
+
+Create a `.env` file in the root:
+
+```
+VITE_API_URL=http://localhost:5000/api
+```
+
+### 4️⃣ Run Development Server
+
+```bash
+npm run dev
+```
+
+### 5️⃣ Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## 🔗 API Integration
+
+The frontend communicates with the backend via RESTful APIs.
+Example:
+
+```js
+import axios from "axios";
+
+const API = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+});
+
+export const loginUser = (data) => API.post("/auth/login", data);
+```
+
+---
+
+## 🧩 Role-based Routing Example
+
+```jsx
+<Route
+  path="/dashboard"
+  element={
+    userRole === "Admin"
+      ? <AdminDashboard />
+      : userRole === "Instructor"
+      ? <InstructorDashboard />
+      : <StudentDashboard />
+  }
+/>
+```
+
+---
+
+## 💡 Future Enhancements
+
+* Add charts for grade analytics
+* Support push notifications
+* Multi-language localization
+* Dark mode toggle
+
+---
+
+## 🧑‍💻 Contributors
+
+* [Raj Sharma](https://github.com/rajsha10)
+* [Pronay Sarkar](https://github.com/PronaySarkar)
+* [Subhadip Mandal](https://github.com/Subhadip1001)
+* [Puskar Saha](https://github.com/PUSKAR-DJ)
+
+---
