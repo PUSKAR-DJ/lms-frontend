@@ -1,6 +1,3 @@
-# 🧩 **README — lms-frontend**
-
-```markdown
 # 🎓 LMS Frontend (React)
 
 This is the **frontend** of the Learning Management System (LMS), built using **React + Vite**.  
